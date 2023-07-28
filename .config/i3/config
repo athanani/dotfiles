@@ -178,7 +178,7 @@ for_window [class="Spotify"] move to workspace $ws6
 for_window [class="Thunar"] move to workspace $ws7
 for_window [class="Nautilus"] move to workspace $ws7
 
-default_border pixel 2
+default_border pixel 1
 # default_floating_border 1
 
 # reload the configuration file
@@ -221,6 +221,7 @@ bar {
         status_command i3blocks -c /home/$USER/.config/i3blocks/i3blocks.conf
         position top
         tray_padding 5
+        tray_output primary
 }
   
 exec_always picom --no-fading-openclose --fade-in-step=1 --fade-out-step=1 --fade-delta=0
@@ -251,4 +252,4 @@ bindsym Ctrl+$mod+c exec pkill greenclip | greenclip clear
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 ## Monitor
-exec_always --no-startup-id xrandr --output HDMI-1 --mode 1920x1080 --rate 120.00 --set "Broadcast RGB" "Full"
+exec_always --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --rate 120.00 --set "Broadcast RGB" "Full"
