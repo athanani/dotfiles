@@ -51,7 +51,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 
 # Browser
 bindsym $mod+n exec firefox
@@ -163,12 +163,12 @@ bindsym Mod1+Shift+0 move container to workspace number $ws10
 # Moving workspaces between screens 
 bindsym $mod+p move workspace to output right
 
-exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/kitty'
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/thunderbird'
 exec --no-startup-id i3-msg 'workspace 6; exec /usr/bin/slack'
 exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/discord'
 
+for_window [class="Alacritty"] move to workspace $ws1
 for_window [class="kitty"] move to workspace $ws1
 for_window [class="firefox"] move to workspace $ws2
 for_window [class="thunderbird"] move to workspace $ws3
