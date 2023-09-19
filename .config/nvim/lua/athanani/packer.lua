@@ -88,6 +88,32 @@ return require('packer').startup(function(use)
     use ('theprimeagen/harpoon')
     use ('mbbill/undotree')
     use ('tpope/vim-fugitive')
-    use ('nvim-treesitter/nvim-treesitter-context');
-
+    use ('nvim-treesitter/nvim-treesitter-context')
+    use {
+        'mfussenegger/nvim-dap'
+    }
+    use {
+        'rcarriga/nvim-dap-ui', 
+        requires = {'mfussenegger/nvim-dap'},
+        config = function()
+          local dap = require("dap")
+          local dapui = require("dapui")
+          require("dapui").setup()
+          dap.listeners.after.event_initialized["dapui_config"] = function()
+            dapui.open()
+          end
+          dap.listeners.before.event_terminated["dapui_config"] = function()
+            dapui.close()
+          end
+          dap.listeners.before.event_exited["dapui_config"] = function()
+            dapui.close()
+          end
+        end
+    }
+    use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
+    use {
+        "microsoft/vscode-js-debug",
+        opt = true,
+        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+    }
 end)

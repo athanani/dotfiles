@@ -165,18 +165,19 @@ bindsym $mod+p move workspace to output right
 
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/thunderbird'
-exec --no-startup-id i3-msg 'workspace 6; exec /usr/bin/slack'
 exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/discord'
+exec --no-startup-id i3-msg 'workspace 6; exec /usr/bin/slack'
 
 for_window [class="Alacritty"] move to workspace $ws1
 for_window [class="kitty"] move to workspace $ws1
 for_window [class="firefox"] move to workspace $ws2
 for_window [class="thunderbird"] move to workspace $ws3
-for_window [class="Slack"] move to workspace $ws4
+for_window [class="obsidian"] move to workspace $ws4
 for_window [class="discord"] move to workspace $ws5
-for_window [class="Spotify"] move to workspace $ws6
-for_window [class="Thunar"] move to workspace $ws7
-for_window [class="Nautilus"] move to workspace $ws7
+for_window [class="Slack"] move to workspace $ws6
+for_window [class="Spotify"] move to workspace $ws7
+for_window [class="Thunar"] move to workspace $ws8
+for_window [class="Nautilus"] move to workspace $ws8
 
 default_border pixel 1
 # default_floating_border 1
