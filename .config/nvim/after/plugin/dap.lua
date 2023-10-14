@@ -1,20 +1,31 @@
 local dap = require("dap")
 
-require("dap-vscode-js").setup({
-  -- node_path = os.getenv('HOME') .. '/.nvm/versions/node/v18.2.0/bin/node',
-  debugger_path = '~/Dev/vscode-js-debug',
-  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
-})
+dap.adapters['pwa-node'] = {
+    type = 'server',
+    host = '127.0.0.1',
+    port = '${port}',
+    executable = {
+        -- Because of mason we can use this command
+        command = 'js-debug-adapter',
+        args = { '${port}' },
+    }
+}
 
-for _, language in ipairs({ "typescript", "javascript" }) do
-  dap.configurations[language] = {
-   {
-    type = "pwa-node",
-    request = "launch",
-    name = "Launch file",
-    program = "${file}",
-    cwd = "${workspaceFolder}",
-    sourceMaps = true,
-    skipFiles = { "<node_internals>/**", "node_modules/**" },
-  }}
-end
+dap.configurations.javascript = {
+    {
+        type = 'pwa-node',
+        request = 'launch',
+        name = 'Launch file',
+        program = '${file}',
+        cwd = '${workspaceFolder}',
+    },
+    {
+        type = 'pwa-node',
+        request = 'launch',
+        name = 'API',
+        program = '${file}',
+        cwd = '${workspaceFolder}',
+        runtimeExecutable = "npm",
+        runtimeArgs = "run serve"
+    },
+}

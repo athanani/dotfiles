@@ -14,15 +14,23 @@ return require('packer').startup(function(use)
     }
 
     use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
+        'sainnhe/gruvbox-material',
+        as = 'gruvbox-material',
         config = function()
-            require('rose-pine').setup({
-                disable_background = true
-            })
-            vim.cmd('colorscheme rose-pine')
+            vim.cmd('colorscheme gruvbox-material')
         end
     })
+
+    -- use({
+    --     'rose-pine/neovim',
+    --     as = 'rose-pine',
+    --     config = function()
+    --         require('rose-pine').setup({
+    --             disable_background = true
+    --         })
+    --         vim.cmd('colorscheme rose-pine')
+    --     end
+    -- })
 
     -- use({ 
     --     "catppuccin/nvim",
@@ -36,6 +44,9 @@ return require('packer').startup(function(use)
     --     "folke/tokyonight.nvim",
     --     as = "tokyonight",
     --     config = function()
+    --         require("tokyonight").setup({
+    --             transparent = true
+    --         })
     --         vim.cmd('colorscheme tokyonight')
     --     end
     -- })
@@ -90,30 +101,34 @@ return require('packer').startup(function(use)
     use ('tpope/vim-fugitive')
     use ('nvim-treesitter/nvim-treesitter-context')
     use {
-        'mfussenegger/nvim-dap'
-    }
+        "mfussenegger/nvim-dap"
+    }    
     use {
         'rcarriga/nvim-dap-ui', 
         requires = {'mfussenegger/nvim-dap'},
-        config = function()
-          local dap = require("dap")
-          local dapui = require("dapui")
-          require("dapui").setup()
-          dap.listeners.after.event_initialized["dapui_config"] = function()
-            dapui.open()
-          end
-          dap.listeners.before.event_terminated["dapui_config"] = function()
-            dapui.close()
-          end
-          dap.listeners.before.event_exited["dapui_config"] = function()
-            dapui.close()
-          end
-        end
+        -- config = function()
+        --   local dap = require("dap")
+        --   local dapui = require("dapui")
+          -- require("dapui").setup()
+          -- dap.listeners.after.event_initialized["dapui_config"] = function()
+          --   dapui.open()
+          -- end
+          -- dap.listeners.before.event_terminated["dapui_config"] = function()
+          --   dapui.close()
+          -- end
+          -- dap.listeners.before.event_exited["dapui_config"] = function()
+          --   dapui.close()
+          -- end
+        -- end
     }
     use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
     use {
         "microsoft/vscode-js-debug",
-        opt = true,
-        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+        build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
     }
+    use 'mattn/emmet-vim'
+    use({
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    })
 end)

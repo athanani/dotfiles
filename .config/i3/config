@@ -252,5 +252,7 @@ bindsym Ctrl+$mod+c exec pkill greenclip | greenclip clear
 
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+## Dunst
+exec_always --no-startup-id dunst /dev/null 2>&1 &
 ## Monitor
 exec_always --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --rate 120.00 --set "Broadcast RGB" "Full"
