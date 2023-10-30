@@ -180,7 +180,8 @@ for_window [class="Thunar"] move to workspace $ws8
 for_window [class="Nautilus"] move to workspace $ws8
 
 default_border pixel 1
-# default_floating_border 1
+hide_edge_borders smart_no_gaps
+smart_borders on
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -244,6 +245,7 @@ bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(d
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym $mod+Shift+S exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 ## Greenclip clipboard
 exec_always --no-startup-id greenclip daemon>/dev/null
