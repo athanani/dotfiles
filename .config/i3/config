@@ -162,7 +162,9 @@ bindsym Mod1+Shift+0 move container to workspace number $ws10
 
 # Moving workspaces between screens 
 bindsym $mod+p move workspace to output right
+bindsym $mod+SHIFT+p exec ~/.config/i3/scripts/outputs.sh
 
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/alacritty'
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/thunderbird'
 exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/discord'
